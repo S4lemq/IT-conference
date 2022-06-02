@@ -1,14 +1,18 @@
 package com.example.ITconference.services;
 
+import com.example.ITconference.exceptions.UserNotFoundException;
 import com.example.ITconference.mappers.UserMapper;
 import com.example.ITconference.repositories.UserRepository;
 import com.example.ITconference.repositories.entities.UserEntity;
 import com.example.ITconference.services.dtos.UserDto;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -18,6 +22,17 @@ public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        var entity = userRepository
+                .findByUsername(username)
+                .orElseThrow(UserNotFoundException::new);
+
+        Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(entity.getRole().toString()));
+        return new org.springframework.security.core.userdetails.User(entity.getUsername(), entity.getPassword(), authorities);
+    }
 
     public UserService(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
@@ -37,9 +52,4 @@ public class UserService implements UserDetailsService {
                 .collect(Collectors.toList());
     }
 
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
-    }
 }
