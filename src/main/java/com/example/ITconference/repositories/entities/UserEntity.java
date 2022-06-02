@@ -1,5 +1,6 @@
 package com.example.ITconference.repositories.entities;
 
+import com.example.ITconference.enums.ApplicationUserRole;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -20,6 +21,8 @@ public class UserEntity {
     private String username;
     private String password;
     private String email;
+    @Enumerated(EnumType.STRING)
+    private ApplicationUserRole role;
 
     public UUID getId() {
         return id;
@@ -53,6 +56,14 @@ public class UserEntity {
         this.email = email;
     }
 
+    public ApplicationUserRole getRole() {
+        return role;
+    }
+
+    public void setRole(ApplicationUserRole role) {
+        this.role = role;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -73,6 +84,7 @@ public class UserEntity {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
+                ", role=" + role +
                 '}';
     }
 }
