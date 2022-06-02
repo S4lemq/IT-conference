@@ -46,10 +46,15 @@ public class UserService implements UserDetailsService {
     }
 
     public List<UserDto> getAllUsers(){
-        var userEntity = (List<UserEntity>) userRepository.findAll();
-        return userEntity.stream()
+        var userEntities = (List<UserEntity>) userRepository.findAll();
+        return userEntities.stream()
                 .map(userMapper::fromEntityToDto)
                 .collect(Collectors.toList());
+    }
+
+    public UserDto getUser(String username){
+        var userEntity = userRepository.findByUsername(username);
+        return userMapper.fromEntityToDto(userEntity.orElseThrow());
     }
 
 }
