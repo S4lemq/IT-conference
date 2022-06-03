@@ -3,3 +3,5 @@ databaseChangeLog:
       file: db/migration/001-userSchema.yaml
   - include:
       file: db/migration/002-conferenceSchema.yaml
+  - include:
+      file: db/migration/003-conferenceSchemaAddName.yaml

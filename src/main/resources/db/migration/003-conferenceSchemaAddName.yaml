@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003-conference-schema-add-name
+      author: Peter Lubowicz
+      changes:
+        - addColumn:
+            tableName: conferences
+            columns:
+              - column:
+                  name: name
+                  type: text
+                  constraints:
+                    nullable: false
