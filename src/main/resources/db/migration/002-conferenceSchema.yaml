@@ -1,0 +1,38 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-conference-schema
+      author: Peter Lubowicz
+      changes:
+        - createTable:
+            tableName: conferences
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: dateBegin
+                  type: timestamp
+                  defaultValue: 2022-01-01T00:00:01Z
+                  constraints:
+                    nullable: false
+              - column:
+                  name: dateFinish
+                  type: timestamp
+                  defaultValue: 2022-01-01T00:00:01Z
+                  constraints:
+                    nullable: false
+              - column:
+                  name: topic
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_user_id_conferences
+                    references: users(id)
