@@ -1,6 +1,6 @@
 package com.example.ITconference.exceptions;
 
-import com.example.ITconference.enums.AuthenticationMessageEnum;
+import com.example.ITconference.enums.exceptions.AuthenticationMessageEnum;
 
 public class UserNotFoundException extends RuntimeException{
 

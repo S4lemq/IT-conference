@@ -1,6 +1,6 @@
 package com.example.ITconference.services.dtos;
 
-import com.example.ITconference.enums.ApplicationUserRole;
+import com.example.ITconference.enums.users.ApplicationUserRole;
 
 import java.util.Objects;
 

@@ -1,4 +1,4 @@
-package com.example.ITconference.enums;
+package com.example.ITconference.enums.users;
 
 public enum ApplicationUserRole {
     ADMIN(ApplicationUserRole.APP_ADMIN),

@@ -1,6 +1,6 @@
 package com.example.ITconference.repositories.entities;
 
-import com.example.ITconference.enums.ApplicationUserRole;
+import com.example.ITconference.enums.users.ApplicationUserRole;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;

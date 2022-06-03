@@ -1,4 +1,4 @@
-package com.example.ITconference.enums;
+package com.example.ITconference.enums.exceptions;
 
 public enum AuthenticationMessageEnum {
 
