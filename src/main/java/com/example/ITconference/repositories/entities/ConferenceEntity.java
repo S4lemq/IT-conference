@@ -32,7 +32,7 @@ public class ConferenceEntity {
     private ConferenceTopic topic;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private UserEntity userEntity;
+    private UserEntity user;
 
     public UUID getId() {
         return id;
@@ -74,12 +74,12 @@ public class ConferenceEntity {
         this.topic = topic;
     }
 
-    public UserEntity getUserEntity() {
-        return userEntity;
+    public UserEntity getUser() {
+        return user;
     }
 
-    public void setUserEntity(UserEntity userEntity) {
-        this.userEntity = userEntity;
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 
     @Override
@@ -87,12 +87,12 @@ public class ConferenceEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ConferenceEntity that = (ConferenceEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(userEntity, that.userEntity);
+        return Objects.equals(id, that.id) && Objects.equals(user, that.user);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userEntity);
+        return Objects.hash(id, user);
     }
 
     @Override
@@ -103,7 +103,7 @@ public class ConferenceEntity {
                 ", dateBegin=" + dateBegin +
                 ", dateFinish=" + dateFinish +
                 ", topic=" + topic +
-                ", userEntity=" + userEntity +
+                ", userEntity=" + user +
                 '}';
     }
 }
