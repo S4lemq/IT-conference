@@ -53,7 +53,7 @@ public class ConferenceEntityBuilder {
         entity.setDateFinish(this.dateFinish);
         entity.setName(this.name);
         entity.setTopic(this.topic);
-        entity.setUserEntity(this.user);
+        entity.setUser(this.user);
         return entity;
     }
 }
